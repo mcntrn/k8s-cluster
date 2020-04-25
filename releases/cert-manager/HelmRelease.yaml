@@ -8,4 +8,4 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: cert-manager
-    version: v0.6.7
+    version: v0.13.0
