@@ -1,0 +1,17 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: mongodb
+  namespace: flashchat
+spec:
+  releaseName: mongodb
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: mongodb
+    version: 7.6.3
+  valuesFrom:
+  - secretKeyRef:
+      name: mongodbcred
+  values:
+    mongodbDatabase: flashchat 
