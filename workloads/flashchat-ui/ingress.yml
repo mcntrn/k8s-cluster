@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: flashchat-ui
+  namespace: flashchat
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  tls:
+  - hosts:
+    - mcntrn.com
+    secretName: tls-secret-prod
+  rules:
+  - host: mcntrn.com
+    http:
+      paths:
+      - backend:
+          serviceName: flashchat-ui
+          servicePort: 80
+        path: /(.*)

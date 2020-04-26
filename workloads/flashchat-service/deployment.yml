@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flashchat-service
+  namespace: flashchat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flashchat-service
+  template:
+    metadata:
+      labels:
+        app: flashchat-service
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: flashchat-service
+        image: mcntrn/flashchat-service:v0.3.3
+        env:
+        - name: MONGO_USERNAME
+          valueFrom:
+              secretKeyRef:
+                key: "mongodbUsername"
+                name: "mongodbcred"
+        - name: MONGO_PWD
+          valueFrom:
+              secretKeyRef:
+                key: "mongodbPassword"
+                name: "mongodbcred"
+        - name: MONGO_HOST
+          value: "mongodb.flashchat.svc.cluster.local"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8080

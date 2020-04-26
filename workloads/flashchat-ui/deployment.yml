@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flashchat-ui
+  namespace: flashchat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flashchat-ui
+  template:
+    metadata:
+      labels:
+        app: flashchat-ui
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: flashchat-ui
+        image: mcntrn/flashchat-ui:v0.2.2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
