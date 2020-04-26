@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - mcntrn.com
-    secretName: tls-secret-prod
+    secretName: tls-secret
   rules:
   - host: mcntrn.com
     http:
