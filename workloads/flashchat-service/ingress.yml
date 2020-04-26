@@ -5,7 +5,7 @@ metadata:
   namespace: flashchat
   annotations:
     kubernetes.io/ingress.class: nginx
-    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     # https://github.com/kubernetes/ingress-nginx/tree/master/docs/examples/rewrite
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
