@@ -19,6 +19,8 @@ spec:
       - name: flashchat-service
         image: mcntrn/flashchat-service:v0.3.3
         env:
+        - name: JAVA_OPTS
+          value: "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0 -XX:+HeapDumpOnOutOfMemoryError"
         - name: MONGO_USERNAME
           valueFrom:
               secretKeyRef:
@@ -37,6 +39,6 @@ spec:
             memory: 128Mi
           limits:
             cpu: 250m
-            memory: 256Mi
+            memory: 512Mi
         ports:
         - containerPort: 8080
