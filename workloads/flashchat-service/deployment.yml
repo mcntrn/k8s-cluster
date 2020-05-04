@@ -20,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-service
-        image: mcntrn/flashchat-service:30315ab
+        image: mcntrn/flashchat-service:62980fb
         env:
         - name: JAVA_OPTS
           value: "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0 -XX:+HeapDumpOnOutOfMemoryError"
