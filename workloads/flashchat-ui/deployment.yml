@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-ui
-        image: mcntrn/flashchat-ui:v0.2.2
+        image: mcntrn/flashchat-ui:312a779
         resources:
           requests:
             cpu: 100m
