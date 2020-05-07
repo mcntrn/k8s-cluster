@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,20 +20,20 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-service
-        image: mcntrn/flashchat-service:v0.3.3
+        image: mcntrn/flashchat-service:62980fb
         env:
         - name: JAVA_OPTS
           value: "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0 -XX:+HeapDumpOnOutOfMemoryError"
         - name: MONGO_USERNAME
           valueFrom:
-              secretKeyRef:
-                key: "mongodbUsername"
-                name: "mongodbcred"
+            secretKeyRef:
+              key: "mongodbUsername"
+              name: "mongodbcred"
         - name: MONGO_PWD
           valueFrom:
-              secretKeyRef:
-                key: "mongodbPassword"
-                name: "mongodbcred"
+            secretKeyRef:
+              key: "mongodbPassword"
+              name: "mongodbcred"
         - name: MONGO_HOST
           value: "mongodb.flashchat.svc.cluster.local"
         resources:
