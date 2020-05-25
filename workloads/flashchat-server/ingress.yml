@@ -19,5 +19,5 @@ spec:
       paths:
       - backend:
           serviceName: flashchat-server
-          servicePort: 80
+          servicePort: 4000
         path: /service(/|$)(.*)
