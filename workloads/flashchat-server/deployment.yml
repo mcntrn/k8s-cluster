@@ -4,26 +4,24 @@ kind: Deployment
 metadata:
   annotations:
     fluxcd.io/automated: "true"
-  name: flashchat-service
+  name: flashchat-server
   namespace: flashchat
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flashchat-service
+      app: flashchat-server
   template:
     metadata:
       labels:
-        app: flashchat-service
+        app: flashchat-server
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: flashchat-service
-        image: mcntrn/flashchat-service:62980fb
+      - name: flashchat-server
+        image: mcntrn/flashchat-server:3f515ed
         env:
-        - name: JAVA_OPTS
-          value: "-XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0 -XX:+HeapDumpOnOutOfMemoryError"
         - name: MONGO_USERNAME
           valueFrom:
             secretKeyRef:
@@ -44,4 +42,4 @@ spec:
             cpu: 250m
             memory: 512Mi
         ports:
-        - containerPort: 8080
+        - containerPort: 80
