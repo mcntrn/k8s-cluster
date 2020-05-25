@@ -20,4 +20,4 @@ spec:
       - backend:
           serviceName: flashchat-server
           servicePort: 4000
-        path: /service(/|$)(.*)
+        path: /graphql(/|$)(.*)
