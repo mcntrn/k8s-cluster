@@ -20,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-ui
-        image: mcntrn/flashchat-ui:312a779
+        image: mcntrn/flashchat-ui:0ec3a0f
         resources:
           requests:
             cpu: 100m
