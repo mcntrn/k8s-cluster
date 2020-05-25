@@ -20,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-server
-        image: mcntrn/flashchat-server:1080bf0
+        image: mcntrn/flashchat-server:6ce4c35
         env:
         - name: MONGO_USERNAME
           valueFrom:
