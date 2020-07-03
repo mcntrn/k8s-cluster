@@ -47,3 +47,21 @@ spec:
             memory: 512Mi
         ports:
         - containerPort: 4000
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - >-
+                  curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json' -d '{\"test\": \"{ messages { _id } }\"}'
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+              - sh
+              - -c
+              - >-
+                  curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json' -d '{\"test\": \"{ messages { _id } }\"}'
+          initialDelaySeconds: 15
+          periodSeconds: 20
