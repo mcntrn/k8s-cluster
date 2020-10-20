@@ -20,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-server
-        image: mcntrn/flashchat-server:995798e
+        image: mcntrn/flashchat-server:8622e50
         env:
         - name: NODE_ENV
           value: "PROD"
