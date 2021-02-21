@@ -1,5 +1,3 @@
 apiVersion: v2
 name: argo
 version: 0.16.2
-
-Unable to create application: application spec is invalid: InvalidSpecError: Unable to get app details: rpc error: code = Unknown desc = `helm show values .` failed exit status 1: load.go:120: Warning: Dependencies are handled in Chart.yaml since apiVersion "v2". We recommend migrating dependencies to Chart.yaml. Error: validation: chart.metadata.version is required
