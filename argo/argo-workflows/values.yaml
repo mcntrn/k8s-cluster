@@ -1,0 +1,29 @@
+singleNamespace: true
+
+# Set to true to install minio and use as a stand-in for an S3 bucket
+minio:
+  install: true
+
+workflow:
+  serviceAccount:
+    create: true  # Specifies whether a service account should be created
+    name: "argo-workflow"  # Service account which is used to run workflows
+  rbac:
+    create: true  # adds Role and RoleBinding for the above specified service account to be able to run workflows
+
+controller:
+  containerRuntimeExecutor: k8sapi
+  workflowDefaults:
+    spec:
+      serviceAccountName: "argo-workflow" 
+      parallelism: 3 #  limits the max total parallel pods that can execute at the same time in a workflow
+      retryStrategy:
+        limit: 10
+        backoff:
+          duration: "1"     # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "1m" # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+      # podGC:
+      #   strategy: OnWorkflowCompletion
+      # ttlStrategy:
+      #   secondsAfterCompletion: 84600
