@@ -20,7 +20,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: flashchat-server
-        image: mcntrn/flashchat-server:26c4192
+        image: mcntrn/flashchat-server:5feb290
         env:
         - name: NODE_ENV
           value: "PROD"
@@ -50,18 +50,20 @@ spec:
         livenessProbe:
           exec:
             command:
-              - sh
-              - -c
-              - >-
-                  curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json' -d '{\"test\": \"{ messages { _id } }\"}'
+            - sh
+            - -c
+            - >-
+              curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json'
+              -d '{\"test\": \"{ messages { _id } }\"}'
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           exec:
             command:
-              - sh
-              - -c
-              - >-
-                  curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json' -d '{\"test\": \"{ messages { _id } }\"}'
+            - sh
+            - -c
+            - >-
+              curl -X POST http://localhost:4000/graphql -H 'Content-Type: application/json'
+              -d '{\"test\": \"{ messages { _id } }\"}'
           initialDelaySeconds: 15
           periodSeconds: 20
