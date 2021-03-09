@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: dag-diamond-coinflip
+  namespace: argo
 spec:
   entrypoint: diamond
   templates:
