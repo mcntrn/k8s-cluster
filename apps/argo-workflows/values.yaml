@@ -5,7 +5,7 @@
 
 # Set to true to install minio and use as a stand-in for an S3 bucket
 minio:
-  install: true
+  install: false
 
 workflow:
   serviceAccount:
