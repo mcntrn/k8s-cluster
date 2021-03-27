@@ -1,0 +1,44 @@
+
+# This file used by helm to overwrite the default values that are included with a helm chart
+# Most of these could be provided using set in the helm_release resource, except for values that are arrays
+# https://helm.sh/docs/chart_template_guide/values_files/
+
+# Set to true to install minio and use as a stand-in for an S3 bucket
+minio:
+  install: true
+
+workflow:
+  serviceAccount:
+    create: true  # Specifies whether a service account should be created
+    name: "argo-workflow"  # Service account which is used to run workflows
+  rbac:
+    create: true  # adds Role and RoleBinding for the above specified service account to be able to run workflows
+
+controller:
+  containerRuntimeExecutor: k8sapi
+  metricsConfig:
+    enabled: true
+  serviceAnnotations:
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
+  workflowDefaults:
+    spec:
+      serviceAccountName: "argo-workflow" 
+      parallelism: 3 #  limits the max total parallel pods that can execute at the same time in a workflow
+      retryStrategy:
+        limit: 10
+        backoff:
+          duration: "1"     # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+          factor: 2
+          maxDuration: "1m" # Must be a string. Default unit is seconds. Could also be a Duration, e.g.: "2m", "6h", "1d"
+      # podGC: 
+      #   strategy: OnWorkflowCompletion
+      # ttlStrategy:
+      #   secondsAfterCompletion: 84600
+
+server:
+  extraArgs:
+    - --auth-mode
+    - client
+    # - --auth-mode
+    # - sso
