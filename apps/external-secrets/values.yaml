@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/mcntrn/kubernetes-external-secrets
+  # use master tag until release is tagged that includes arm v7
   tag: master
 
 env:
