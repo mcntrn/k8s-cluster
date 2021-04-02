@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: kube-system
 resources:
   - release.yaml
+  - terraformrc.yaml
+  - workspacesecrets.yaml
 configMapGenerator:
   - name: terraform-operator-values
     files:
