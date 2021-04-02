@@ -10,7 +10,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: hashicorp
-        namespace: kube-system
+        namespace: flux-system
       version: "1.0.0"
   interval: 1h0m0s
   install:
