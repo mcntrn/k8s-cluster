@@ -5,9 +5,3 @@ resources:
   - release.yaml
   - terraformrc.yaml
   - workspacesecrets.yaml
-configMapGenerator:
-  - name: terraform-operator-values
-    files:
-      - values.yaml=values.yaml
-configurations:
-  - kustomizeconfig.yaml
