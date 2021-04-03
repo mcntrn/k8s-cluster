@@ -5,3 +5,4 @@ resources:
   - argo.yaml
   - external-secrets.yaml
   - hashicorp.yaml
+  - t3n.yaml
