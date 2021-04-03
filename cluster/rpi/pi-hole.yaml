@@ -7,7 +7,7 @@ spec:
   interval: 5m0s
   sourceRef:
     kind: GitRepository
-    name: pi-hole
+    name: flux-system
   path: ./apps/pi-hole
   prune: true
   validation: client
