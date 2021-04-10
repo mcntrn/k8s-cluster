@@ -6,3 +6,4 @@ resources:
   - external-secrets.yaml
   - hashicorp.yaml
   - t3n.yaml
+  - nextcloud.yaml
