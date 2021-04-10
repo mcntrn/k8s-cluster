@@ -1,2 +1,6 @@
 ingress:
   enabled: true
+
+persistence:
+  enabled: true
+  size: 100Gi
