@@ -4,3 +4,6 @@ ingress:
 persistence:
   enabled: true
   size: 100Gi
+
+nextcloud:
+  host: nextcloud.mcntrn.com
